@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import {EeSayacService} from "./ee-sayac.service";
 
 @Component({
   selector: 'lib-ee-sayac',
-  template: `
-    <p>
-      ee-sayac works!
-    </p>
-  `,
+  templateUrl:`ee-sayac.component.html`,
   styles: [
   ]
 })
 export class EeSayacComponent implements OnInit {
-
-  constructor() { }
+  counter = 0;
+  constructor(private eeSayacService:EeSayacService) { }
 
   ngOnInit(): void {
   }
 
+  // handler for button click
+  buttonClick() {
+    this.counter++;
+    this.eeSayacService.updateCounter(this.counter);
+
+  }
 }
